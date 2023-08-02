@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chef label</title>
+  <style>
+    .box {
+       height: 70vh;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+    }
+    body {
+        margin:0;
+        font-family: sans-serif, Verdana, Geneva, Tahoma;
+    }
+    .title {
+        margin: 10px;
+    }
+            /* Button style*/
+        .button {
+          border: none;
+          text-decoration: none;
+          color: black;
+        }
+        button {
+            margin: 2px;
+            border: none;
+            border-radius: 5px;
+            color: black;
+        }
+        /*text inputs*/
+        .input {
+            margin: 3px;
+            display: flex;
+            align-items: center;
+        }
+</style>
+</head>
+<body>
+  <h1 class="title">Register</h1>
+  <div class="title">
+    <button><a href="/login" class="button">Login</a></button>
+  </div>
+  <div class="box">
+    <div>
+      <form action="/register" method="POST">
+        <div>
+          <label for="name">Name</label>
+          <input class="input" type="text" id="name" name="name" required>
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input class="input" type="email" id="email" name="email" required>
+        </div>
+        <div>
+          <label for="password">Password</label>
+          <input class="input" type="password" id="password" name="password" required>
+        </div>
+        <button type="submit" class="button">Register</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

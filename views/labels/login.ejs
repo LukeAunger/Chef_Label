@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chef label</title>
+  <style>
+    .box {
+       height: 70vh;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+    }
+    body {
+        margin:0;
+        font-family: sans-serif, Verdana, Geneva, Tahoma;
+    }
+    .title {
+        margin: 10px;
+    }
+            /* Button style*/
+            .button {
+            border: none;
+            text-decoration: none;
+            color: black;
+        }
+        button {
+            margin: 2px;
+            border: none;
+            border-radius: 5px;
+            color: black;
+        }
+        /*text inputs*/
+        .input {
+            margin: 3px;
+            display: flex;
+            align-items: center;
+        }
+</style>
+</head>
+<body>
+  <h1 class="title">Login</h1>
+<% if (messages.error) { %>
+  <%= messages.error %>
+<% } %>
+<div class="box">
+  <form action="/login" method="POST">
+    <div>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required class="input">
+    </div>
+    <div>
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required class="input">
+    </div>
+    <button type="submit" class="button">Login</button>
+  </form>
+</div>
+</body>
+</html>

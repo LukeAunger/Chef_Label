@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>LabelMaker</title>
+    <style>
+        /* Button style*/
+        .button {
+            border: none;
+            text-decoration: none;
+            color: black;
+        }
+        button {
+            margin: 2px;
+            border: none;
+            border-radius: 5px;
+            color: black;
+        }
+        /*carousel*/
+        * {box-sizing: border-box}
+        body {
+            margin:0;
+            font-family: sans-serif, Verdana, Geneva, Tahoma;
+        }
+        
+        .mySlides {
+            border-radius: 25px;
+            border: 2px solid;
+            max-width: 50%;
+            margin: auto;
+
+
+            height: 50vh;
+            text-align: center;
+
+            /*div align*/
+            position: absolute;
+            right: 0;
+            left: 0;
+            top: 0;
+            bottom: 0;
+        }
+
+        /* Slideshow container */
+        .slideshow-container {
+            height: 100vh;
+        }
+
+        /* Next & previous buttons */
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: black;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+
+        /* Position the "next button" to the right */
+        .next {right: 0; border-radius: 3px 0 0 3px;}
+
+        /* On hover, add a black background color with a little bit see-through */
+        .prev:hover, .next:hover {background-color: rgba(0,0,0,0.8);}
+
+        /* Caption text */
+        .text {color: black; font-size: 15px; padding: 8px 12px; position: absolute; bottom: 10px; width: 100%; text-align: center;}
+
+        /* Fading animation */
+        .fade {animation-name: fade;animation-duration: 1.5s;}
+
+        @keyframes fade {from {opacity: .4} to {opacity: 1}}
+        
+        /* On smaller screens, decrease text size */
+        @media only screen and (max-width: 300px) {.prev, .next,.text {font-size: 11px}}
+    </style>
+</head>
+<body>
+
+    <div class="slideshow-container">
+        <div class="mySlides fade">
+            <h1 class="lbHd">Labels</h1>
+            <button>
+                <a href="/labels/new" class="button">New Label</a>
+            </button>
+        </div>
+
+        <% labels.forEach(label => { %>
+            <div class="mySlides fade">
+                <h4 class="ticket_title"><%= label.title %></h4>
+                <div><%= label.createdAt.toLocaleDateString() %></div>
+                <div><button><a href="labels/<%= label.slug %>" class="button">Read more</a></button></div>
+                <div><button><a href="labels/edit/<%= label.id %>" class="button">Edit</a></button></div>
+
+                <form action="/labels/<%= label.id %>?_method=DELETE" method="POST">
+                    <button>Delete</button>
+                </form>
+            </div>
+        <% }) %>
+
+        <a class="prev" onclick="plusSlides(-1)">❮</a>
+        <a class="next" onclick="plusSlides(1)">❯</a>
+    </div>
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {slideIndex = 1}    
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+              slides[i].style.display = "none";  
+            }
+            for (i = 0; i < dots.length; i++) {
+              dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";  
+            dots[slideIndex-1].className += " active";
+        }
+    </script>
+</body>
+</html>

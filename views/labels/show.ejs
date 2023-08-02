@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LabelMaker</title>
+    <style>
+        body {
+            margin:0;
+            font-family: sans-serif, Verdana, Geneva, Tahoma;
+        }
+        .title {
+            margin: 10px;
+        }
+        /*contents centering*/
+        .box {
+           height: 70vh;
+           display: flex;
+           align-items: center;
+           justify-content: center;
+        }
+        /* Button style*/
+        .button {
+            border: none;
+            text-decoration: none;
+            color: black;
+        }
+        button {
+            margin: 2px;
+            border: none;
+            border-radius: 5px;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title"><%= label.title %></h1>
+    <button class="title"><a href="/" class="button">All Labels</a></button>
+
+    <div class="box">
+        <div>
+            <div><%- label.sanitizedHtml %></div>
+            <div>Date made: <%= label.createdAt.toLocaleDateString() %></div>
+            <div>Use by: <%= label.useUntill.toLocaleDateString() %></div>
+            <div><%= label.chef %></div>
+            <br>
+            <button><a href="/labels/edit/<%= label.id %>" class="button">Edit </a></button>
+        </div>
+    </div>
+
+</body>
+</html>

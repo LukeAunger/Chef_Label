@@ -1,0 +1,33 @@
+<style>
+        /* Button style*/
+        .button {
+            border: none;
+            text-decoration: none;
+            color: black;
+        }
+        button {
+            margin: 2px;
+            border: none;
+            border-radius: 5px;
+            color: black;
+        }
+        /*text inputs*/
+        .input {
+            margin: 3px;
+            display: flex;
+            align-items: center;
+        }
+</style>
+
+<div>
+    <div>
+        <label for="title">Title</label>
+        <input required value="<%= label.title %>" type="text" name="title" id="title" class="input">
+    </div>
+    <div>
+        <label for="ingredients">ingredients</label>
+        <textarea required type="text" name="ingredients" id="ingredients" class="input"><%= label.ingredients %></textarea>
+    </div>
+</div>
+<div><button id="cancel"> <a href="/" class="button">Cancel</a> </button></div>
+<div><button id="submit">Save</button></div>
